@@ -41,7 +41,7 @@ class Ticket(models.Model):
     seat = models.ForeignKey(Seats,on_delete=models.CASCADE)
     total = models.IntegerField(default=0)
     user = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
-    venue = models.ForeignKey(Venue,on_delete=models.CASCADE ,default = 'PVR')
+    venue = models.ForeignKey(Venue,on_delete=models.CASCADE, default = ' ')
     def __str__(self) -> str:
         return f'{self.seat},{self.total}'
 

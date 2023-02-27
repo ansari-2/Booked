@@ -40,16 +40,15 @@ def display_seats(request,id):
    
 def choose_seats(request,id,id2): 
       venue = Venue.objects.get(id = id2)
-      time = venue.showtime
-      event = Event.objects.get(name = venue.event.name)
-      request.session['total'] = 0
+      showtime = venue.showtime
+      name = venue.name
+      total = 0
       selected = Seats.objects.get(id = id, venue = venue)
-      bill = Ticket.objects.create(seat = selected,total = selected.price,user = request.user)
-      for each in Ticket.objects.all().filter(user = request.user,seat = Seats.objects.get(venue = venue)):
-
-       request.session['total'] += each.total
+      bill = Ticket.objects.create(seat = selected,total = selected.price,user = request.user,venue = venue)
+      for each in Ticket.objects.all().filter(user = request.user):
+       total += each.total
       allseats = Seats.objects.all().filter(venue = venue)
-      return render(request,'booking/seats.html',{'allseats':allseats,'total':request.session['total']}) 
+      return render(request,'booking/seats.html',{'allseats':allseats,'total':total}) 
   
    
 
@@ -64,13 +63,31 @@ def booked(request):
     return render(request,'booking/paid.html',{'allseats':allseats,'booked':booked})
       
 
-def movies(request):
-   movies = Event.objects.all().filter(category = Category.objects.get(type = 'Movie'))
-   return render(request,'booking/display_movies.html',{'movies': movies})
-
-
 def venues(request,id):
    venues = Venue.objects.all().filter(event = Event.objects.get(id = id))
    return render(request,'booking/display_venues.html',{'venues': venues})
 
-# , seat = Seats.objects.get(venue = Venue.objects.get(showtime = time,event = event))):
+def main(request):
+   category = Category.objects.all()
+   return render(request,'booking/main.html',{'categories':category})
+
+def explore(request,id):
+   category = Category.objects.get(id = id)
+   if category.type == 'Movie':
+    movies = Event.objects.all().filter(category = Category.objects.get(type = 'Movie'))
+    return render(request,'booking/display_events.html',{'events': movies})
+   elif category.type == 'Event':
+    event = Event.objects.all().filter(category = Category.objects.get(type = 'Event'))
+    return render(request, 'booking/display_events.html',{'events':event})
+   else:
+    sport = Event.objects.all().filter(category = Category.objects.get(type = 'Sports'))
+    return render(request, 'booking/display_events.html',{'events':sport})
+   
+def search_bar(request):
+   if request.method == 'POST':
+      genre = request.POST.get('genre','action')
+      genre = genre.capitalize()
+      event = Event.objects.all().filter(genre = genre)
+      return render(request,'booking/display_events.html',{'events':event})
+   return redirect('main')  
+   

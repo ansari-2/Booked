@@ -6,6 +6,8 @@ urlpatterns = [
     path('seats<int:id>',views.display_seats,name = 'seats'),
     path('seat-number/<int:id>/<int:id2>', views.choose_seats, name = 'choose'),
     path('paid', views.booked, name ='booked'),
-    path('movies', views.movies, name = 'movies'),
-    path('venues<int:id>', views.venues, name = 'venues')
+    path('venues<int:id>', views.venues, name = 'venues'),
+    path('main', views.main, name = 'main'),
+    path('explore<int:id>', views.explore, name = 'explore'),
+    path('search', views.search_bar, name = 'search_bar')
 ]
