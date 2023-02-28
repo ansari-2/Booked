@@ -16,7 +16,7 @@ def login_(request):
         print(user)
         if user is not None:
             login(request, user)
-        return redirect('movies')
+        return redirect('main')
 
 def logout_(request):
     logout(request)
@@ -44,9 +44,10 @@ def choose_seats(request,id,id2):
       name = venue.name
       total = 0
       selected = Seats.objects.get(id = id, venue = venue)
-      bill = Ticket.objects.create(seat = selected,total = selected.price,user = request.user,venue = venue)
-      for each in Ticket.objects.all().filter(user = request.user):
-       total += each.total
+      bill = Bill.objects.create(seat = selected,total = selected.price,user = request.user)
+      user = Bill.objects.filter(user = request.user)
+      for each in user:
+       total += each.seat.price
       allseats = Seats.objects.all().filter(venue = venue)
       return render(request,'booking/seats.html',{'allseats':allseats,'total':total}) 
   
@@ -54,13 +55,16 @@ def choose_seats(request,id,id2):
 
 @permission_required('booking.view_ticket', login_url='login')  
 def booked(request):
-    booked = Ticket.objects.filter(user = request.user)
+    booked = Bill.objects.all().filter(user = request.user)
     for each in booked:
      seats = Seats.objects.get(number = each.seat.number, venue = each.seat.venue)
+     ticket = Tickets.objects.create(seat = seats,user = request.user)
      seats.booked = True
      seats.save()
+    Bill.objects.all().delete() 
+    tickets = Tickets.objects.all()
     allseats = Seats.objects.all()
-    return render(request,'booking/paid.html',{'allseats':allseats,'booked':booked})
+    return render(request,'booking/paid.html',{'allseats':allseats,'booked':tickets})
       
 
 def venues(request,id):

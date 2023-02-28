@@ -3,9 +3,10 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     type = models.CharField(max_length=100)
+    image = models.CharField(max_length=100,null=True,blank = True )
     
     def __str__(self):
-        return f'Type: {self.type}'       
+        return f'Type: {self.type} Image:{self.image}'       
 
 class Event(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -37,11 +38,15 @@ class Seats(models.Model):
     def __str__(self) -> str:
         return f'Number:{self.number} Price:{self.price} booked:{self.booked}'
     
-class Ticket(models.Model):
+class Bill(models.Model):
     seat = models.ForeignKey(Seats,on_delete=models.CASCADE)
     total = models.IntegerField(default=0)
     user = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
-    venue = models.ForeignKey(Venue,on_delete=models.CASCADE, default = ' ')
     def __str__(self) -> str:
-        return f'{self.seat},{self.total}'
+        return f'{self.seat},{self.total},{self.user},{self.venue}'
+    
+class Tickets(models.Model):
+    seat = models.ForeignKey(Seats,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
+
 
