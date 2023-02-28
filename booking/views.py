@@ -62,7 +62,7 @@ def booked(request):
      seats.booked = True
      seats.save()
     Bill.objects.all().delete() 
-    tickets = Tickets.objects.all()
+    tickets = Tickets.objects.all().filter(user = request.user)
     allseats = Seats.objects.all()
     return render(request,'booking/paid.html',{'allseats':allseats,'booked':tickets})
       
