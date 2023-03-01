@@ -48,7 +48,7 @@ def display_seats(request,id):
       
    
    
-def choose_seats(request,id,id2): 
+def choose_seats(request,id,id2):
     venue = Venue.objects.get(id = id2)
     total = 0
     try:
