@@ -93,7 +93,8 @@ def venues(request,id):
 
 def main(request):
    category = Category.objects.all()
-   return render(request,'booking/main.html',{'categories':category})
+   events= Event.objects.all()
+   return render(request,'booking/main.html',{'categories':category, 'events':events})
 
 def explore(request,id):
     category = Category.objects.get(id = id)
