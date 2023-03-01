@@ -49,4 +49,9 @@ class Tickets(models.Model):
     seat = models.ForeignKey(Seats,on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
 
+class profile(models.Model):
+    user = models.OneToOneField(User , on_delete=models.CASCADE) 
+    phone = models.CharField(max_length=10)
+
+
 

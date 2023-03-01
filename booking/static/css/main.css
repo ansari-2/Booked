@@ -1,0 +1,26 @@
+body{
+    background-color: #EAFDFC;
+}
+
+
+
+.card{
+    transition: 0.3s;
+    box-shadow: rgba(132, 164, 239, 0.986) 0px 10px 10px, rgba(132, 164, 239, 0.986) 0px 10px 10px;;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.form-inline{
+    position: relative;
+    right: 550px;
+}
+
+.form-control{
+    padding-left: 150px;
+    padding-right: 150px;
+    text-align: center;
+}
+

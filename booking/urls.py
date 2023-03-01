@@ -9,5 +9,8 @@ urlpatterns = [
     path('venues<int:id>', views.venues, name = 'venues'),
     path('main', views.main, name = 'main'),
     path('explore<int:id>', views.explore, name = 'explore'),
-    path('search', views.search_bar, name = 'search_bar')
+    path('search', views.search_bar, name = 'search_bar'),
+    path('user',views.display, name = 'display'),
+    path('create',views.userProfile, name = 'profile'),
+
 ]
