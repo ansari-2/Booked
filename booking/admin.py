@@ -1,4 +1,4 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register([Category,Event,Venue,Seats,Tickets,Bill])
+admin.site.register([Category,Event,Venue,Seats,Tickets,Bill,profile])

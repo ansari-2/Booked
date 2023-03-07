@@ -36,7 +36,7 @@ class Seats(models.Model):
     price = models.IntegerField(default=0)
     booked = models.BooleanField(default=False)
     def __str__(self) -> str:
-        return f'Number:{self.number} Price:{self.price} booked:{self.booked}'
+        return f'Venue:{self.venue}Number:{self.number} Price:{self.price} booked:{self.booked}'
     
 class Bill(models.Model):
     seat = models.ForeignKey(Seats,on_delete=models.CASCADE)
@@ -51,7 +51,9 @@ class Tickets(models.Model):
 
 class profile(models.Model):
     user = models.OneToOneField(User , on_delete=models.CASCADE) 
-    phone = models.CharField(max_length=10)
+    email = models.CharField(max_length=100,blank = True,null = True)
+    username = models.CharField(max_length= 100,blank=True,null=True)
+
 
 
 
