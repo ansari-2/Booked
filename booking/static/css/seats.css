@@ -1,0 +1,21 @@
+
+.choose {
+        width: 40px;
+        height: 40px;
+        background-color: white; 
+        color: black; 
+        border: 2px solid #008CBA;
+        }
+      
+.choose:hover {
+        width: 40px;
+        height: 40px;
+        background-color: #008CBA;
+        color: white;
+      }
+
+.booked{
+    width: 41px;
+    height: 39px;
+    background-color: antiquewhite;
+}

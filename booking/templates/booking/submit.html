@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form method="POST" action="{% url 'submit' %}">
+            {% csrf_token %}
+            <label for="password">Enter OTP</label>
+            <input type="password" id="password" name="otp">
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
