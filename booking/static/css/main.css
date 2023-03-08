@@ -8,11 +8,29 @@ body{
     background-color: #EAFDFC;
 }
 
+.explore-heading{
+    color: rgb(20, 34, 61); 
+    transition: 0.3s;
+}
 
+.discount_heading{
+    color: #EAFDFC;
+    transition: 0.3s;
+}
+
+
+
+.carousel-item {
+    width: 100%;
+}
+
+.explore-heading:hover{
+    color: rgba(132, 164, 239, 0.986);
+}
 
 .card{
     transition: 0.3s;
-    box-shadow: rgba(132, 164, 239, 0.986) 0px 10px 10px, rgba(132, 164, 239, 0.986) 0px 10px 10px;;
+    box-shadow: rgba(132, 164, 239, 0.986) 0px 10px 10px, rgba(132, 164, 239, 0.986) 0px 10px 10px;
 }
 
 .card:hover{
@@ -29,6 +47,16 @@ body{
     padding-right: 150px;
     text-align: center;
 }
+
+
+h3{
+    font-family: 'Tilt Neon', cursive;
+    font-weight: bold;
+}
+
+
+
+
 
 
 
@@ -72,4 +100,17 @@ footer ul{
 }
 .socials li:hover{
     color: aqua;
+}
+
+
+
+.carousel-item:before {
+    -webkit-box-shadow: inset 0 0 40rem rgba(0, 0, 0, 1);
+    box-shadow: inset 0 0 40rem rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 50;
+    left: 50;
+    width: 100%;
+    height: 100%;
+    content: "";
 }

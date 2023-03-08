@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(20, 34, 61);
+}
+
+.navbar-brand{
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    color: aliceblue;
+}
+
+.form-inline{
+    position: relative;
+    right: 550px;
+}
+
+.form-control{
+    padding-left: 150px;
+    padding-right: 150px;
+    text-align: center;
+}
+

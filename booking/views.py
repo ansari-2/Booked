@@ -113,6 +113,10 @@ def main(request):
        events.append(Event.objects.get(name = trending))      
    return render(request,'booking/main.html',{'categories':category,'trending': events})
 
+def display_slider(request):
+    slider=Carousel.objects.all()
+    return render(request,'booking/main.html', {'slider':slider})
+
 def explore(request,id):
     category = Category.objects.get(id = id)
     if category.type == 'Movie':
@@ -252,3 +256,4 @@ Showtime: {each.seat.venue.showtime} \nSeat Number:{each.seat.number}\n\n''')
         return render(request,'booking/paid.html',{'booked':tickets})
 
 
+# return render(request,'booking/main.html',{'categories':category,'trending': events})
