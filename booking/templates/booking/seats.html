@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/seats.css' %}" />
+    <script defer>
+      (function () {
+        window.onpageshow = function (event) {
+          if (event.persisted) {
+            window.location.reload();
+          }
+        };
+      })();
+    </script>
+    <script defer src="{% static 'js/seats.js' %}"></script>
+    <style>
+      .select {
+        width: 40px;
+        height: 40px;
+        background-color: red;
+        color: black;
+        border: 2px solid #008cba;
+      }
+    </style>
+    <script defer>
+      let total = 0;
+      const mySeats = [];
+      const myVenue = [];
+
+      function clicked(number) {
+        const myArray = number.split(",");
+
+        const buttonPressed = document.getElementById(myArray[0]);
+        buttonPressed.classList.toggle("select");
+        buttonPressed.classList.toggle("choose");
+
+        if (buttonPressed.classList[0] == "select") {
+          total += Number(myArray[1]);
+          myVenue.push(Number(myArray[2]));
+          mySeats.push(Number(myArray[0]));
+        } else if (buttonPressed.classList[0] == "choose") {
+          total -= Number(myArray[1]);
+          const index = mySeats.indexOf(Number(myArray[0]));
+          const indexVenue = myVenue.indexOf(Number(myArray[2]));
+
+          mySeats.splice(index, 1);
+          myVenue.splice(index, 1);
+        }
+        document.getElementById("total").innerText = "TOTAL:" + total;
+
+        const calculateTotal = document.getElementById("total");
+        calculateTotal.value = total.toString();
+
+        const myCollection = [];
+        myCollection.push(total, mySeats, myVenue);
+        calculateTotal.value = JSON.stringify(myCollection);
+      }
+    </script>
+  </head>
+  <body>
+    {% if not user.is_authenticated %}
+    <h3>
+      Requires password, authenticate yourself
+      <a href="{% url 'login' %}">here</a>.
+    </h3>
+    {% else %} {% for each in topseats %} {% if each.booked %}
+    <button class="booked">{{each.number}}</button>
+    {% else %}
+    <button
+      class="choose"
+      value="{{each.number}},{{each.price}},{{each.venue.id}}"
+      id="{{each.number}}"
+      onclick="clicked(value)"
+    >
+      {{each.number}} {{each.price}}
+    </button>
+    {% endif %} {% endfor %}
+    <h3>TOP SEATS</h3>
+    <br /><br />
+
+    {% for each in bottomseats %} {% if each.booked %}
+    <button class="booked">{{each.number}}</button>
+    {% else %}
+    <button
+      class="choose"
+      value="{{each.number}},{{each.price}},{{each.venue.id}}"
+      id="{{each.number}}"
+      onclick="clicked(value)"
+    >
+      {{each.number}} {{each.price}}
+    </button>
+    {% endif %} {% endfor %}
+    <form action="{% url 'paynow' %}" onsubmit="return pressed()" method="POST">
+      {% csrf_token %}
+
+      <button id="total" name="total" value="0" type="submit">TOTAL:0</button>
+    </form>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
+    {% endif %}
+  </body>
+</html>
