@@ -1,10 +1,18 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,500&family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Sign Up</title>
     <script>
       function validation() {
         submitOK = true;
@@ -69,30 +77,96 @@
       }
     </script>
   </head>
+
+
+
+
   <body>
+   <div class="form-outer">
     <form
-      name="signup"
-      action="{% url 'profile' %}"
-      onsubmit="return validation()"
-      method="POST"
-    >
-      {% csrf_token %}
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" requried />
-      <label for="password1">Password</label>
-      <input type="password" id="password1" name="password1" required />
-      <label for="password2">Re-enter Password</label>
-      <input type="password" id="password2" name="password2" required />
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required />
-      <label for="phone">phone</label>
-      <input type="text" name="phone" id="phone" required />
-      <label for="first_name">First Name</label>
-      <input type="text" id="first_name" name="first_name" required />
-      <label for="last_name">Last Name</label>
-      <input type="text" name="last_name" id="last_name" />
-      <input type="submit" value="Login" />
-    </form>
+    name="signup"
+    action="{% url 'profile' %}"
+    onsubmit="return validation()"
+    method="POST"
+   >
+   <h3 style="font-family: 'Pacifico', cursive; margin-left: 32%; margin-top: 7%;">Register Here</h3>
+    {% csrf_token %}
+    <div class="form-details">
+      <label for="username">Username</label> <br>
+      <input type="text" id="username" name="username" requried /> <br> 
+      <label for="password1">Password</label> <br> 
+      <input type="password" id="password1" name="password1" required /> <br> 
+      <label for="password2">Re-enter Password</label> <br> 
+      <input type="password" id="password2" name="password2" required /> <br> 
+      <label for="email">Email</label> <br> 
+      <input type="email" id="email" name="email" required /> <br> 
+      <label for="phone">phone</label> <br> 
+      <input type="text" name="phone" id="phone" required /> <br> 
+      <label for="first_name">First Name</label> <br> 
+      <input type="text" id="first_name" name="first_name" required /> <br> 
+      <label for="last_name">Last Name</label> <br> 
+      <input type="text" name="last_name" id="last_name" /> <br> 
+      <input style=" margin-top: 13px; background-color: #0b71ba; border-radius: 100px; box-shadow: rgba(39, 158, 182, 0.108) 0 -25px 18px -14px inset,rgba(39, 158, 182, 0.108) 0 1px 2px,rgba(39, 158, 182, 0.108) 0 2px 4px,rgba(39, 158, 182, 0.108) 0 4px 8px,rgba(39, 158, 182, 0.108) 0 8px 16px,rgba(39, 158, 182, 0.108) 0 16px 32px; color: white;
+      cursor: pointer; display: inline-block; padding: 7px 20px; text-align: center; text-decoration: none; transition: all 250ms; border: 0; font-size: 16px; user-select: none; -webkit-user-select: none; touch-action: manipulation;" type="submit" value="Login" /> <br>
+    </div>
+
+
+    <div class="register">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px;" placeholder="Full Name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Date Of Birth</label>
+          <input type="date" class="form-control" id="exampleInputPassword1" style="width: 500px;">
+        </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" style="width: 500px;" placeholder="Ex:-john123@outlook.com">
+            <small id="emailHelp" class="form-text text-muted" style="color: aliceblue;">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" style="width: 500px;"placeholder='Must contain 8 characters'>
+          </div>
+          <div class="account">
+            <label class="form-group" for="account">Do you agree with our terms and conditions?</label>
+            <br>
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">If yes, check this box</label>
+            </div>
+          </div>
+          <br>
+          <div class="button">
+            <a href="main.html"><button type="button" class="btn btn-light">Submit</button></a>
+          </div>
+        </form>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </form>
+   </div>
+      
+    
+   
     <!--  function validation() {
         const nameOf = document.getElementById("username");
         localStorage.setItem("username", nameOf.value);

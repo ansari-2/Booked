@@ -12,8 +12,7 @@ urlpatterns = [
     path('user',views.display, name = 'display'),
     path('create',views.userProfile, name = 'profile'),
     path('submit', views.submit,name = 'submit'),
-    path('test',views.test_total,name='test'),
-    path('slider',views.display_slider, name='slider')
+    path('test',views.test_total,name='test')
 ]
 
 # path('paid', views.booked, name ='booked'),
