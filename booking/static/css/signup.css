@@ -1,0 +1,27 @@
+
+.content{
+    margin-top: 130px;
+    color: aliceblue;
+    font-size: 50px;
+    /* font-family: 'Lobster', cursive; */
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+.row{
+    position: relative;
+    top: 70px;
+}
+.form-group{
+    
+    color: aliceblue;
+    font-weight: bolder;
+}
+.account
+{
+    font-size: 20px;
+    font-weight: bolder;
+    color: aliceblue;
+    text-align: center;
+    position: relative;
+    right: 120px;
+}

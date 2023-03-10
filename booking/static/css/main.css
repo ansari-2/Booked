@@ -1,11 +1,20 @@
 body{
     background-color: #EAFDFC;
 }
+#nav{
+    background-color: rgb(20, 34, 61); position: sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
 
-.navbar-brand{
+
+#logo{
     font-family: 'Pacifico', cursive;
     font-size: 35px;
     color: aliceblue;
+    
 }
 
 .trending{
@@ -44,6 +53,9 @@ body{
     height: 600px;
 }
 
+#image{
+    width: 100%;
+}
 
 footer h3{
     font-family: 'Pacifico', cursive;
@@ -86,6 +98,18 @@ footer ul{
 .socials li:hover{
     color: aqua;
 }
+
+#description{
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    margin-left: 80px;  
+    width: 100px;
+    margin: 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 
 
 

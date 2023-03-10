@@ -83,7 +83,7 @@
       id="{{each.number}}"
       onclick="clicked(value)"
     >
-      {{each.number}}
+      {{each.number}} {{each.price}}
     </button>
     {% endif %} {% endfor %}
     <h3>TOP SEATS</h3>
@@ -98,10 +98,10 @@
       id="{{each.number}}"
       onclick="clicked(value)"
     >
-      {{each.number}}
+      {{each.number}} {{each.price}}
     </button>
     {% endif %} {% endfor %}
-    <form action="{% url 'test' %}" onsubmit="return pressed()" method="POST">
+    <form action="{% url 'paynow' %}" onsubmit="return pressed()" method="POST">
       {% csrf_token %}
 
       <button id="total" name="total" value="0" type="submit">TOTAL:0</button>

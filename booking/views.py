@@ -79,8 +79,8 @@ def choose_seats(request,id,id2):
     return render(request,'booking/seats.html',{'total':total,'topseats':topseats,'bottomseats':bottomseats})   
 
 def submit(request):
+
     if request.method == 'POST': 
-        user_otp = request.POST.get('otp','0000')
         otp = randint(1000,9999)
         user = profile.objects.get(user = request.user)
         subject = f'OTP Verification'
@@ -88,11 +88,11 @@ def submit(request):
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [user.email, ]
         send_mail( subject, message, email_from, recipient_list )
-        if otp == int(user_otp):
-            return render(request,'booking/created.html')
-        else:
-            return render(request,'booking/submit.html')
-    return render(request,'booking/submit.html')    
+        value_lst = request.POST.get('total')
+        json_value = json.loads(value_lst)
+        print(otp,value_lst)
+    context = {'json_data':value_lst,'otp':otp}
+    return render(request,'booking/submit.html', context) 
 
 
       
@@ -227,12 +227,14 @@ def test_total(request):
         pass
         value_lst = request.POST['total']
         json_value = json.loads(value_lst)
+        seat_lst = []
         for each in json_value[1]:
             seats = Seats.objects.get(number = each, venue = json_value[2][0])
+            seat_lst.append(seats)
             ticket,created = Tickets.objects.get_or_create(seat = seats,user = request.user)
             seats.booked = True
             seats.save()
-        tickets = Tickets.objects.all().filter(user = request.user)
+        tickets = Tickets.objects.all().filter(user = request.user,seat__in = seat_lst)
 
         display = [f'Your booked tickets are:\n']
         number = 0
@@ -250,5 +252,20 @@ Showtime: {each.seat.venue.showtime} \nSeat Number:{each.seat.number}\n\n''')
         recipient_list = [user.email, ]
         send_mail( subject, message, email_from, recipient_list )
         return render(request,'booking/paid.html',{'booked':tickets})
+    tickets = Tickets.objects.filter(user = request.user)
+    return render(request,'booking/paid.html',{'booked':tickets})
+    
+def paynow(request):
+    if request.method == "POST":
+        value_lst = request.POST['total']
+        json_value = json.loads(value_lst)
+        total = json_value[0]
+        seats_number = json_value[1]
+        venue_id = json_value[2][0]
+        venue = Venue.objects.get(id=venue_id)
+        print(venue.event.name)
+        context = {'venue':venue,'total':total,'seats':seats_number,'json_data':value_lst}
+    return render(request,'booking/paynow.html',context)
+
 
 

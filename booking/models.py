@@ -16,6 +16,8 @@ class Event(models.Model):
     time = models.CharField(max_length=50)
     image = models.CharField(max_length=256)
     genre = models.CharField(max_length=100)
+    banner = models.CharField(max_length=256,null = True,blank = True)
+    description = models.CharField(max_length=1000,null = True,blank = True)
     
     def __str__(self):
         return f'Category:{self.category}, name: {self.name},ratings: {self.ratings},language:{self.language},time: {self.time},image:{self.image}'
