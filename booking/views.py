@@ -113,17 +113,35 @@ def main(request):
        events.append(Event.objects.get(name = trending))      
    return render(request,'booking/main.html',{'categories':category,'trending': events})
 
-def explore(request,id):
+def explore(request,id=0):
+    
+        
+    language_filter = Event.objects.all().filter(category = id).values_list('language').distinct()
+    rating_filter = Event.objects.all().filter(category = id).values_list('ratings').distinct()
+    genre_filter = Event.objects.all().filter(category = id).values_list('genre').distinct()
+    
+    filter_context = {'Genre':genre_filter,'Language':language_filter,'Ratings':rating_filter}
     category = Category.objects.get(id = id)
-    if category.type == 'Movie':
-        movies = Event.objects.all().filter(category = Category.objects.get(type = 'Movie'))
-        return render(request,'booking/display_events.html',{'events': movies})
-    elif category.type == 'Event':
-        event = Event.objects.all().filter(category = Category.objects.get(type = 'Event'))
-        return render(request, 'booking/display_events.html',{'events':event})
-    else:
-        sport = Event.objects.all().filter(category = Category.objects.get(type = 'Sports'))
-        return render(request, 'booking/display_events.html',{'events':sport})
+    events = Event.objects.all().filter(category=id)
+    json_value = json.dumps('[0]')
+    if request.method == "POST":
+        print('inside post NOW')
+        json_value = request.POST.get('submitButton')
+        print(json_value)
+        json_lst = json.loads(json_value)
+        
+        if len(json_lst[0]) !=0:
+            print('inhere json[0]')
+            events = events.filter(category=id,genre__in=json_lst[0])
+        # print(events)
+        if len(json_lst[1]) !=0:
+            events = events.filter(category=id,language__in=json_lst[1])
+        # print(events)
+        if len(json_lst[2]) !=0:
+            events = events.filter(category=id,ratings__in=json_lst[2])
+        # print(events,'here')  
+    return render(request,'booking/filter.html',{'category_id':id,'events':events,'filter_context':filter_context,'json_data':json_value})
+    
    
 def search_bar(request):
    if request.method == 'POST':
@@ -264,3 +282,5 @@ def paynow(request):
         print(venue.event.name)
         context = {'venue':venue,'total':total,'seats':seats_number,'json_data':value_lst}
     return render(request,'booking/paynow.html',context)
+def filter(request):
+    return render(request,'booking/filter.html')

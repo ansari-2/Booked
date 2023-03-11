@@ -1,50 +1,43 @@
-body{
-   
-    background-color: #EAFDFC;
-
+body {
+  background-color: #eafdfc;
 }
 
-
-
-
-footer h3{
-    font-family: 'Pacifico', cursive;
+footer h3 {
+  font-family: "Pacifico", cursive;
 }
 
-footer{
-    padding-top: 10px;
-    background-color:rgb(20, 34, 61);
-    color: #EAFDFC;
-    padding-bottom: 10px;
-text-align: center;
+footer {
+  padding-top: 10px;
+  background-color: rgb(20, 34, 61);
+  color: #eafdfc;
+  padding-bottom: 10px;
+  text-align: center;
 }
-footer svg{
-    height: 30px;
-    width: 30px;
-}
-
-footer ul{
-    list-style-type: none;
+footer svg {
+  height: 30px;
+  width: 30px;
 }
 
-.socials{
-   
-    display: flex;
-    margin-left: 44%;
+footer ul {
+  list-style-type: none;
 }
 
-.socials li{
-    
-
-    padding-left: 5px;
-    padding-right: 5px;
-   
+.socials {
+  display: flex;
+  margin-left: 44%;
 }
 
-
-.socials svg{
-    color: #EAFDFC;
+.socials li {
+  padding-left: 5px;
+  padding-right: 5px;
 }
-.socials li:hover{
-    color: aqua;
+
+.socials svg {
+  color: #eafdfc;
+}
+.socials li:hover {
+  color: aqua;
+}
+body {
+  margin: 0;
 }

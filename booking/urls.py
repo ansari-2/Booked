@@ -14,4 +14,5 @@ urlpatterns = [
     path('submit', views.submit,name = 'submit'),
     path('test',views.test_total,name='test'),
     path('paynow',views.paynow,name='paynow'),
+    path('filter',views.filter,name='filter'),
 ]
