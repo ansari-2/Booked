@@ -15,23 +15,95 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
   </head>
   <body>
-
-    <nav class="navbar navbar-light" style="background-color: rgb(20, 34, 61);">
-      <!-- <img src="{% static 'images/LOGO1.png' %}" alt="" style="height: 70px; width: 120px; "> -->
-      
-      <a class="navbar-brand " style="color: white; font-family: 'Pacifico', cursive; font-size: 35px;">Booked </a> 
-        <form class="form-inline " action="{% url 'search_bar' %}" method="post"  >
-          {% csrf_token %}
-          <input class="form-control mr-sm-2"  placeholder="Search by Genre/Type" aria-label="Search" name = 'genre' >
-          <!-- <button class="btn btn-outline-success my-2 my-sm-0 mr-auto" type="submit">Search</button> -->
-        </form>
+    <nav class="navbar navbar-expand-lg navbar-light" id="nav">
+      <a class="navbar-brand" id="logo" href="{% url 'main' %}">Booked</a>
+      <form class="form-inline " action="{% url 'search_bar' %}" method="post"  >
+        {% csrf_token %}
+        <input class="form-control mr-sm-2"  placeholder="Search by Events/Genre/Venues" aria-label="Search" name = 'genre' style="margin-left: 400px;" >
+      </form>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="margin-left: 84px;">
+        <div class="navbar-nav" style="margin-left: 15px;">
+          {% if user %}
+          {% if not searched %}
+          <!-- <a class="nav-link" href="#" id="redirect1">       -->
+            
+            <div class="dropdown-filter" data-dropdown  style="margin-block: auto;">
+            <button class="link-filter" data-dropdown-button id="redirect1">Filter</button>
+            <form
+              action="{% url 'explore' category_id %}"
+              onsubmit="return filterCheck()"
+              method="POST"
+              class="myform"
+            >
+              {% csrf_token %}
+              <input
+                type="hidden"
+                id="jsonId"
+                name="jsonName"
+                value="{{json_data}}"
+              />
+              <div class="dropdown-menu-filter information-grid" style="background-color: ivory;">
+                {% for each,values in filter_context.items %}
+                <div>
+                  <div class="dropdown-heading-filter" style="color: black;">{{each}}</div>
+    
+                  <div class="dropdown-filter" style="width: 50px;">
+                    {% for every in values %}
+                    <div class="each-filter" style="width: 77px;">
+                      <label for="{{every.0}}" style="color: black;">{{every.0}}</label>
+                      <input
+                        class="filterCheckbox"
+                        type="checkbox"
+                        name="{{each}}"
+                        id="{{every.0}}"
+                        value="{{every.0}}"
+                      />
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endfor %}
+                <button type="submit" name="submitButton" id="submitButton" class="filter">
+                  Filter
+                </button>
+                <!-- <button class="filter" style="width: 113px;font-size: 15px;"><a href="{% url 'explore' category_id %}" id="filter" style="text-decoration:none; color:currentColor">
+                Remove Filter</a>
+              </button> -->
+              </div>
+            </form>
+          </div></a>
+          {% endif %}
+          <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+              <span id = 'redirect1'> Welcome, {{user.username}}</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:ivory">
+              <a class="dropdown-item" href="{% url 'test' %}">My Tickets</a>
+              <!-- <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a> -->
+            </div>
+          </li>
+          {% else %}
+          <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>
+          {% endif %}
+        </div>
+      </div>
     </nav>
 
 
 
+
+    <div style="color: transparent;">{% block filter %}{% endblock %}</div>
 
     <div class="container">
       <div class="row" style="padding-top: 100px; padding-bottom: 100px;">

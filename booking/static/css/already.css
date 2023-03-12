@@ -1,34 +1,45 @@
+
 body{
-  background-color: rgb(20, 34, 61);
-}
-
-#logo{
-  font-family: 'Pacifico', cursive;
-  font-size: 35px;
-  color: aliceblue;
+    background-color:  rgb(20, 34, 61);
+  }
   
-}
-
+  
+#nav{
+    background-color: rgb(20, 34, 61);
+  }
+  
+  
+#logo{
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    color: aliceblue;
+    
+  }
+  
 #redirect{
   color: #EAFDFC;
   margin-left: 30px;
   font-size: 25px;
   font-family: 'Raleway', sans-serif;
-}
+  }
   
 #redirect1{
-  color: #EAFDFC;
-  margin-left: 10px;
-  font-size: 25px;
-  font-family: 'Raleway', sans-serif;
+    color: #EAFDFC;
+    margin-left: 10px;
+    font-size: 25px;
+    font-family: 'Raleway', sans-serif;
   }
   
 .form-control{
-        
-  padding-left: 150px;
-  padding-right: 150px;
-  text-align: center;
+    padding-left: 150px;
+    padding-right: 150px;
+    text-align: center;
   }
+
+.Text{
+  padding-top: 20px;
+  text-align: center;
+}
   
 footer h3{
   font-family: 'Pacifico', cursive;

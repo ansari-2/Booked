@@ -16,9 +16,29 @@ body{
     color: aliceblue;
     
 }
+  
+#redirect{
+    color: #EAFDFC;
+    margin-left: 30px;
+    font-size: 25px;
+    font-family: 'Raleway', sans-serif;
+    }
+    
+#redirect1{
+      color: #EAFDFC;
+      margin-left: 10px;
+      font-size: 25px;
+      font-family: 'Raleway', sans-serif;
+    }
+    
+.form-control{
+      padding-left: 150px;
+      padding-right: 150px;
+      text-align: center;
+    }
 
 .trending{
-    font-family: 'Pacifico', cursive;
+    font-family: 'Raleway', sans-serif;
     font-size: 50px;
     padding: 50px;
     padding-bottom: 25px;
@@ -35,10 +55,6 @@ body{
     transform: scale(1.1);
 }
 
-.form-inline{
-    position: relative;
-    right: 550px;
-}
 
 .form-control{
     padding-left: 150px;
@@ -66,7 +82,7 @@ footer{
     background-color:rgb(20, 34, 61);
     color: #EAFDFC;
     padding-bottom: 10px;
-text-align: center;
+    text-align: center;
 }
 footer svg{
     height: 30px;

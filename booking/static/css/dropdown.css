@@ -1,0 +1,68 @@
+.header-filter {
+    background-color: black;
+    display: flex;
+  
+    align-items: baseline;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  
+  .link-filter {
+    background: none;
+    border: none;
+    text-decoration: none;
+    color: #777;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .dropdown-filter.active > .link-filter:focus,
+  .link-filter:hover {
+    color: black;
+  }
+  
+  .header-filter > .dropdown-filter > .link-filter:focus {
+    outline: none;
+  }
+  
+  .dropdown-filter {
+    position: relative;
+  }
+  .dropdown-menu-filter {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0.25rem);
+    background-color: white;
+    padding: 0.75rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px 0 rgb(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    transform: translateY(-10px);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  
+  /* .dropdown-menu.active {
+        opacity: 1;
+      } */
+  .dropdown-filter.active > .myform > .dropdown-menu-filter {
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: auto;
+    z-index: 1;
+  }
+  
+  /* .outerSelector > .selector1 + .selector2 {
+        border: 2px solid black;
+        min-height: 300px;
+      } */
+  
+  .information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    grid-gap: 1rem 2rem;
+  }
+  
