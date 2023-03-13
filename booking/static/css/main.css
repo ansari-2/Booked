@@ -1,36 +1,43 @@
-/* *{
-    margin: 0;
-    padding: 0;
-} */
-
-
 body{
     background-color: #EAFDFC;
 }
 
-.explore-heading{
-    color: rgb(20, 34, 61); 
-    transition: 0.3s;
-}
-
-.discount_heading{
-    color: #EAFDFC;
-    transition: 0.3s;
-}
 
 
-
-.carousel-item {
+#nav{
+    background-color: rgb(20, 34, 61); position: sticky;
+    position: sticky;
+    top: 0;
     width: 100%;
+    z-index: 1;
 }
 
-.explore-heading:hover{
-    color: rgba(132, 164, 239, 0.986);
+
+#logo{
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    color: aliceblue;
+    
+}
+
+.explore{
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    padding: 50px;
+    padding-bottom: 55px;
+    text-align: center;
+    margin-right: 45px;
+
+}
+
+
+.explore-cards{
+    padding-bottom: 10%;
 }
 
 .card{
     transition: 0.3s;
-    box-shadow: rgba(132, 164, 239, 0.986) 0px 10px 10px, rgba(132, 164, 239, 0.986) 0px 10px 10px;
+    box-shadow: rgba(132, 164, 239, 0.986) 0px 10px 10px, rgba(132, 164, 239, 0.986) 0px 10px 10px;;
 }
 
 .card:hover{
@@ -49,15 +56,21 @@ body{
 }
 
 
-h3{
-    font-family: 'Tilt Neon', cursive;
-    font-weight: bold;
+
+
+.carousel-item{
+    height: 600px;
+} 
+
+
+.carousel-item img{
+    height: 510px;
 }
 
 
-
-
-
+#image{
+    width: 100%;
+}
 
 
 footer h3{
@@ -103,6 +116,28 @@ footer ul{
 }
 
 
+.detail-event{
+    font-family: 'Raleway', sans-serif;
+    color: #EAFDFC;
+    font-weight: bold;
+    font-size: 15px;
+}
+#description{
+    font-family: 'Raleway', sans-serif;
+    color: #EAFDFC;
+    margin-left: 80px;  
+    width: 100px;
+    margin: 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#row-details{
+ width: 1500px;
+}
+
+
 
 .carousel-item:before {
     -webkit-box-shadow: inset 0 0 40rem rgba(0, 0, 0, 1);
@@ -111,6 +146,78 @@ footer ul{
     top: 5;
     left: 5;
     width: 100%;
-    height: 100%;
+    height: 85%;
     content: "";
 }
+
+
+
+
+
+@media screen and (max-width: 650px){
+    
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ #nav{
+    height: 100px;
+    
+} 
+
+.explore{
+    margin-right: 30px;
+} 
+
+.explore-cards{
+    margin-left: 90px;
+    padding-bottom: 90px;
+}
+
+.img-details{
+    height: 500px;
+    width: 10px;
+}
+
+#row-details{
+   
+   margin-top: 90px;
+    width: 520px;
+}
+
+.upcoming h3{
+    position: relative;
+    left: 10px;
+}
+
+.one{
+    width: 500px;
+}
+.two{
+    position: relative;
+    right: 30px;
+    width: 500px;
+}
+.three{
+    width: 500px;
+}
+.four{
+    position: relative;
+    right: 30px;
+    width: 500px;
+}
+
+
+.carousel-item:before {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+}
+
+
+
+
+
+
+    }

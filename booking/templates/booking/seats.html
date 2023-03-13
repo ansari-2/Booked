@@ -68,44 +68,50 @@
       }
     </script>
   </head>
-  <body>
+  <body style="background-color: rgb(20, 34, 61);">
     {% if not user.is_authenticated %}
     <h3>
       Requires password, authenticate yourself
       <a href="{% url 'login' %}">here</a>.
     </h3>
-    {% else %} {% for each in topseats %} {% if each.booked %}
-    <button class="booked">{{each.number}}</button>
-    {% else %}
-    <button
-      class="choose"
-      value="{{each.number}},{{each.price}},{{each.venue.id}}"
-      id="{{each.number}}"
-      onclick="clicked(value)"
-    >
-      {{each.number}}
-    </button>
-    {% endif %} {% endfor %}
-    <h3>TOP SEATS</h3>
-    <br /><br />
-
-    {% for each in bottomseats %} {% if each.booked %}
-    <button class="booked">{{each.number}}</button>
-    {% else %}
-    <button
-      class="choose"
-      value="{{each.number}},{{each.price}},{{each.venue.id}}"
-      id="{{each.number}}"
-      onclick="clicked(value)"
-    >
-      {{each.number}}
-    </button>
-    {% endif %} {% endfor %}
-    <form action="{% url 'test' %}" onsubmit="return pressed()" method="POST">
-      {% csrf_token %}
-
-      <button id="total" name="total" value="0" type="submit">TOTAL:0</button>
-    </form>
+    
+      {% else %} {% for each in topseats %} {% if each.booked %}
+    
+      <button class="booked">{{each.number}}</button>
+      {% else %}
+      <button
+        class="choose"
+        value="{{each.number}},{{each.price}},{{each.venue.id}}"
+        id="{{each.number}}"
+        onclick="clicked(value)"
+       >
+        {{each.number}} {{each.price}}
+      </button>
+      {% endif %} {% endfor %}
+      <h3 style="color: #EAFDFC; font-weight: bold;">TOP SEATS</h3>
+      <br /><br />
+  
+      {% for each in bottomseats %} {% if each.booked %}
+      <button  class="booked">{{each.number}}</button>
+      {% else %}
+      <button
+        class="choose"
+        value="{{each.number}},{{each.price}},{{each.venue.id}}"
+        id="{{each.number}}"
+        onclick="clicked(value)"
+        s
+      >
+        {{each.number}} {{each.price}}
+      </button>
+      {% endif %} {% endfor %}
+      <form action="{% url 'paynow' %}" onsubmit="return pressed()" method="POST" >
+        {% csrf_token %}
+  
+        <button id="total" name="total" value="0" type="submit" style=" background-color: #0b71ba; border-radius: 100px; box-shadow: rgba(39, 158, 182, 0.108) 0 -25px 18px -14px inset,rgba(39, 158, 182, 0.108) 0 1px 2px,rgba(39, 158, 182, 0.108) 0 2px 4px,rgba(39, 158, 182, 0.108) 0 4px 8px,rgba(39, 158, 182, 0.108) 0 8px 16px,rgba(39, 158, 182, 0.108) 0 16px 32px; color: white;
+        cursor: pointer; display: inline-block; padding: 7px 20px; text-align: center; text-decoration: none; transition: all 250ms; border: 0; font-size: 16px; user-select: none; -webkit-user-select: none; touch-action: manipulation; margin-left: 30%;">TOTAL:0</button>
+      </form>
+    
+   
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

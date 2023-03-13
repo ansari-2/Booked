@@ -27,17 +27,20 @@
     <div style="padding-top: 50px; border-radius:30px ; background-color: #EAFDFC;" class="border m-5">
         <img src="{{venue.logo}}" alt="" style="height: 100px; width: 180px; margin-left: 40px;">
         <div class="venue-details" style="margin-left: 80px;">
-          <span><h3 style="margin-left:260px; position: relative; bottom: 100px;">{{venue.name}}</h3> </span>
-          <span style="margin-left:260px; margin-bottom: 30px; position: relative; bottom: 70px; ">{{venue.location}}</span>
+        
+            <span><h3 style="margin-left:260px; position: relative; bottom: 100px;">{{venue.name}}</h3> </span>
+            <span style="margin-left:260px; margin-bottom: 30px; position: relative; bottom: 70px; ">{{venue.location}}</span>
+           
+              <p style="margin-left: 260px; position: relative; bottom: 53px;">Show timings</p>
+              
+              <a style="margin-left: 260px; position: relative; bottom: 42px;" href="{% url 'seats' venue.id %}"><button id="venue-button" style=" background-color: #0b71ba; border-radius: 100px; box-shadow: rgba(39, 158, 182, 0.108) 0 -25px 18px -14px inset,rgba(39, 158, 182, 0.108) 0 1px 2px,rgba(39, 158, 182, 0.108) 0 2px 4px,rgba(39, 158, 182, 0.108) 0 4px 8px,rgba(39, 158, 182, 0.108) 0 8px 16px,rgba(39, 158, 182, 0.108) 0 16px 32px; color: white;
+               cursor: pointer; display: inline-block; padding: 7px 20px; text-align: center; text-decoration: none; transition: all 250ms; border: 0; font-size: 16px; user-select: none; -webkit-user-select: none; touch-action: manipulation;">{{venue.showtime}}</button></a>
          
-            <p style="margin-left: 260px; position: relative; bottom: 53px;">Show timings</p>
-            
-            <a style="margin-left: 260px; position: relative; bottom: 42px;" href="{% url 'seats' venue.id %}"><button id="venue-button" style=" background-color: #0b71ba; border-radius: 100px; box-shadow: rgba(39, 158, 182, 0.108) 0 -25px 18px -14px inset,rgba(39, 158, 182, 0.108) 0 1px 2px,rgba(39, 158, 182, 0.108) 0 2px 4px,rgba(39, 158, 182, 0.108) 0 4px 8px,rgba(39, 158, 182, 0.108) 0 8px 16px,rgba(39, 158, 182, 0.108) 0 16px 32px; color: white;
-             cursor: pointer; display: inline-block; padding: 7px 20px; text-align: center; text-decoration: none; transition: all 250ms; border: 0; font-size: 16px; user-select: none; -webkit-user-select: none; touch-action: manipulation;">{{venue.showtime}}</button></a>
+          
         </div>
     </div>
     {% endfor %}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </body>
 </html>

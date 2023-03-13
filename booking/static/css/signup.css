@@ -1,29 +1,27 @@
-body{
-    background-color:  #b7d2d7;
+
+.content{
+    margin-top: 130px;
+    color: aliceblue;
+    font-size: 50px;
+    /* font-family: 'Lobster', cursive; */
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
 }
-
-.form-outer{
-    /* box-shadow: rgba(132, 164, 239, 0.986) 0px 5px 5px, rgba(132, 164, 239, 0.986) 0px 5px 5px; */
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    
-
-
-    text-align: left;
-    background-color:  rgb(153, 183, 244); ;
-    
-    border: 2px solid rgb(0, 0, 0);
-    width: 430px;
-    height: 500px;
-    margin-top: 140px;
-    margin-left: 500px;
+.row{
+    position: relative;
+    top: 70px;
 }
-
-.form-details{
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
+.form-group{
     
-    color: black;
- margin-left: 25px;
- margin-top: 30px;
- padding: 10px;
+    color: aliceblue;
+    font-weight: bolder;
+}
+.account
+{
+    font-size: 20px;
+    font-weight: bolder;
+    color: aliceblue;
+    text-align: center;
+    position: relative;
+    right: 120px;
 }

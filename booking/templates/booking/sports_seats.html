@@ -145,7 +145,7 @@
           </div>
         </div>
       </div>
-      <form action="{% url 'test' %}" onsubmit="return pressed()" method="POST">
+      <form action="{% url 'paynow' %}" onsubmit="return pressed()" method="POST">
         {% csrf_token %}
 
         <button id="total" name="total" value="0" type="submit">TOTAL:</button>

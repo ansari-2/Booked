@@ -21,3 +21,27 @@ body{
 
 
 
+@media screen and (max-width: 650px){
+ .border{
+    width: 90%;
+ }
+
+
+    img{
+      
+        height: 10px;
+        width: 10px;
+
+    }
+   
+   
+    h3{
+    font-size: 20px;
+   }
+  
+
+   .venue-details{
+     position: relative;
+     right: 100px;
+   }
+  }

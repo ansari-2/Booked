@@ -1,4 +1,6 @@
 
+
+
 .choose {
         width: 40px;
         height: 40px;
@@ -19,3 +21,8 @@
     height: 39px;
     background-color: antiquewhite;
 }
+
+.seats_stack{
+        padding-top: 500px;
+}
+
