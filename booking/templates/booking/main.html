@@ -14,28 +14,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
   </head>
   <body>
-
-
-
-
-
-    <!-- NAVIGATION BAR -->
-    <nav class="navbar navbar-light" id="nav">
-      <a class="navbar-brand" id = 'logo'>Booked </a> 
-        <form class="form-inline " action="{% url 'search_bar' %}" method="post"  >
-          {% csrf_token %}
-          <input class="form-control mr-sm-2"  placeholder="Search by Events/Genre/Venues" aria-label="Search" name = 'genre' >
-        </form>
+    <nav class="navbar navbar-expand-lg  navbar-light" id="nav">
+      <a class="navbar-brand" id="logo" href="{% url 'main' %}">Booked</a>
+      <form class="form-inline " action="{% url 'search_bar' %}" method="post"  >
+        {% csrf_token %}
+        <input class="form-control mr-sm-2"  placeholder="Search by Events/Genre/Venues" aria-label="Search" name = 'genre' style="margin-left: 350px;" >
+      </form>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav" style="margin-left: 62px;">
+          {% if user %}
+          <a class="nav-link active" style="font-size: 19px;" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" style="font-size: 19px;" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+              <span id = 'redirect1' style="font-size: 19px;" > Welcome, {{user.username}}</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:ivory">
+              <a class="dropdown-item" href="{% url 'test' %}">My Tickets</a>
+              <a class="dropdown-item" href="{% url 'favourites' %}">My Favourites</a>
+              <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a> --> 
+            </div>
+          </li>
+          {% else %}
+          <a class="nav-link active"  style="font-size: 19px;" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
+          <a class="nav-link" style="font-size: 19px;" href="{% url 'login' %}" id="redirect1">Login</a>
+          <a class="nav-link active" style="font-size: 19px; margin-left: 10px;" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
+          {% endif %}
+        </div>
+      </div>
     </nav>
 
-
-
-
-
-
-    <!-- EXPLORE CARDS -->
-    <h1 class="explore">Explore</h1>
-    <div class="container explore-cards" style="padding-top: 30px;">
+    <h1 class="trending" style="font-size: 45px; font-weight: bold; margin-right: 50px; margin-top: 50px;">Explore</h1>
+    <div class="container explore-cards" style="padding-top: 70px;">
       <div class="row">
     {% for each in categories %}
         <div class="col-sm">
@@ -51,31 +65,28 @@
         {% endfor %}
       </div>
     </div>
+
+    <br><br><br>
+
     
-
-
-
-
-    <!-- CAROUSEL -->
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="padding-top: 70px;">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="{% static 'images/Slide1.jpg' %}" class="d-block w-100" alt="..." class="img-fluid">
+          <img src="{% static 'images/Slide1.jpg' %}" class="d-block w-100" alt="...">
         </div>
         {% for each in trending %}
         <div class="carousel-item">
           <div style="background-color: rgb(20, 34, 61);">
           <div class="container" style="margin: 0px; padding: 0px;">
-            <div class="row" id="row-details" >
+            <div class="row" id="row-details" style="width: 1500px;">
               <div class="col-sm">
-                <img src="{{each.banner}}" class="d-block w-100" alt="..." class="img-fluid" >
+                <img src="{{each.banner}}" class="d-block w-100" alt="...">
               </div>
               <div class="col-sm" id = 'description'>
                 <div style="margin-top:50px ;">
-                <h1 style="font-size: 60px; font-weight: bolder;">{{each.name}}</h1>
-                <h2 class="detail-event">{{each.language}} • {{each.genre}} •{{each.ratings}}</h2>
+                <h1 style="font-size: 60px;">{{each.name}}</h1>
+                <h2>{{each.language}} • {{each.genre}} •{{each.ratings}}</h2>
                 <br><br>
-                
                 {{each.description}}
                 </div>
               </div>
@@ -94,50 +105,34 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-    <br><br><br>
-    
-
-
-
-
-    <!-- YOUTUBE VIDS -->
-    <div class="container" style="padding-bottom: 80px;">
-      <h3 style="font-size: 45px; margin-bottom: 40px; margin-right: 30px; text-align: center; position: relative;  right: 30px; font-family: 'Pacifico', cursive; padding-bottom: 20px;" class="upcoming" >Upcoming And Most Anticipated</h3>
+  
+    <div class="container" style="padding-bottom: 80px; padding-top: 40px;">
+      <h3 class="trending" style="font-size: 45px; font-weight: bold; padding-bottom: 10px;" >Upcoming And Most Anticipated</h3>
        <div class="row">
         <div class="">
-          <iframe class="one" style="padding-right: 30px; padding-bottom: 30px;" width="560" height="315" src="https://www.youtube.com/embed/ooZdaF2zMlM?start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe class="two" style="padding-left: 30px; padding-bottom: 30px;" width="560" height="315" src="https://www.youtube.com/embed/sT7Wab-8QS8?start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe class="three" style="padding-right: 30px;" width="560" height="315" src="https://www.youtube.com/embed/qEVUtrk8_B4?start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe class="four" style="padding-left: 30px;" width="560" height="315" src="https://www.youtube.com/embed/YaSGgf9TyvE?start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe style="padding-right: 30px; padding-bottom: 30px;" width="560" height="315" src="https://www.youtube.com/embed/ooZdaF2zMlM?start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe style="padding-left: 30px; padding-bottom: 30px;" width="560" height="315" src="https://www.youtube.com/embed/sT7Wab-8QS8?start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe style="padding-right: 30px;" width="560" height="315" src="https://www.youtube.com/embed/qEVUtrk8_B4?start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe style="padding-left: 30px;" width="560" height="315" src="https://www.youtube.com/embed/YaSGgf9TyvE?start=5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
        </div>
     </div>
     
 
-
-
- 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   </body>
 
-
-  <!-- FOOTER -->
-<footer>
-  <div class="footer-heading">
-    <h3>Booked</h3>
-  </div>
-  <div class="footer-content">
-    <p>A platform which allows you to book tickets of your favourite movies, shows , events and sports.</p>
- 
-    <div class="footer-bottom">
-      <p>copyright &copy; 2023 Booked. </p>
-    </div> 
-  </div>
-</footer>
-
-
+  <footer>
+    <div class="footer-heading">
+      <h3>Booked</h3>
+    </div>
+    <div class="footer-content">
+      <p>A platform which allows you to book tickets of your favourite movies, shows , events and sports.</p>
+   
+      <div class="footer-bottom">
+        <p>copyright &copy; 2023 Booked. </p>
+      </div> 
+    </div>
+  </footer>
 </html>
-
-</html>
-

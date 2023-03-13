@@ -1,0 +1,62 @@
+{% extends 'booking/display_events.html' %} {% block filter %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}" />
+  </head>
+  <body>
+    <!--
+    <div class="header-filter" style="background-color: transparent;">
+      <div class="dropdown-filter" data-dropdown>
+        <button class="link-filter" data-dropdown-button>Filter</button>
+        <form
+          action="{% url 'explore' category_id %}"
+          onsubmit="return filterCheck()"
+          method="POST"
+          class="myform"
+        >
+          {% csrf_token %}
+          <input
+            type="hidden"
+            id="jsonId"
+            name="jsonName"
+            value="{{json_data}}"
+          />
+          <div class="dropdown-menu-filter information-grid">
+            {% for each,values in filter_context.items %}
+            <div>
+              <div class="dropdown-heading-filter">{{each}}</div>
+
+              <div class="dropdown-filter">
+                {% for every in values %}
+                <div class="each-filter">
+                  <label for="{{every.0}}">{{every.0}}</label>
+                  <input
+                    class="filterCheckbox"
+                    type="checkbox"
+                    name="{{each}}"
+                    id="{{every.0}}"
+                    value="{{every.0}}"
+                  />
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+            <button type="submit" name="submitButton" id="submitButton">
+              Filter
+            </button>
+            <a href="{% url 'explore' category_id %}">Remove Filter</a>
+          </div>
+        </form>
+      </div>
+    </div> -->
+    <script defer src="{% static 'js/dropdown.js' %}"></script>
+  </body>
+</html>
+{% endblock %}

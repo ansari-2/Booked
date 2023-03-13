@@ -17,3 +17,43 @@ function pressed() {
     return false;
   }
 }
+
+
+(function () {
+  window.onpageshow = function (event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
+  };
+})();
+
+let total = 0;
+const mySeats = [];
+const myVenue = [];
+
+function clicked(number) {
+  const myArray = number.split(",");
+
+  const buttonPressed = document.getElementById(myArray[0]);
+  buttonPressed.classList.toggle("select");
+  buttonPressed.classList.toggle("choose");
+
+  if (buttonPressed.classList[0] == "select") {
+    total += Number(myArray[1]);
+    myVenue.push(Number(myArray[2]));
+    mySeats.push(Number(myArray[0]));
+  } else if (buttonPressed.classList[0] == "choose") {
+    total -= Number(myArray[1]);
+    const index = mySeats.indexOf(Number(myArray[0]));
+    const indexVenue = myVenue.indexOf(Number(myArray[2]));
+
+    mySeats.splice(index, 1);
+    myVenue.splice(index, 1);
+  }
+  const calculateTotal = document.getElementById("total");
+  calculateTotal.value = total.toString();
+
+  const myCollection = [];
+  myCollection.push(total, mySeats, myVenue);
+  calculateTotal.value = JSON.stringify(myCollection);
+}

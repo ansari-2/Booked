@@ -21,7 +21,6 @@ body{
   margin-left: 30px;
   font-size: 25px;
   font-family: 'Raleway', sans-serif;
-  font-style: normal;
   }
   
 #redirect1{
@@ -29,7 +28,6 @@ body{
     margin-left: 10px;
     font-size: 25px;
     font-family: 'Raleway', sans-serif;
-    font-style: normal;
   }
   
 .form-control{
@@ -42,12 +40,15 @@ body{
    text-align: center;
    padding-left: 280px;
    padding-right: 280px;
+   
  }
 
 .width{
     text-align: center;
     width: 300px;
 }
+
+
 .form-group{
     
     color: aliceblue;
