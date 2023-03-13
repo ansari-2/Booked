@@ -40,21 +40,21 @@ class Seats(models.Model):
     def __str__(self) -> str:
         return f'Venue:{self.venue}Number:{self.number} Price:{self.price} booked:{self.booked}'
     
-class Bill(models.Model):
-    seat = models.ForeignKey(Seats,on_delete=models.CASCADE)
-    total = models.IntegerField(default=0)
-    user = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
-    def __str__(self) -> str:
-        return f'{self.seat},{self.total},{self.user},{self.venue}'
+# class Bill(models.Model):
+#     seat = models.ForeignKey(Seats,on_delete=models.CASCADE)
+#     total = models.IntegerField(default=0)
+#     user = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
+#     def __str__(self) -> str:
+#         return f'{self.seat},{self.total},{self.user},{self.venue}'
     
 class Tickets(models.Model):
     seat = models.ForeignKey(Seats,on_delete=models.CASCADE)
     user = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
 
-class profile(models.Model):
-    user = models.OneToOneField(User , on_delete=models.CASCADE) 
-    email = models.CharField(max_length=100,blank = True,null = True)
-    username = models.CharField(max_length= 100,blank=True,null=True)
+# class profile(models.Model):
+#     user = models.OneToOneField(User , on_delete=models.CASCADE) 
+#     email = models.CharField(max_length=100,blank = True,null = True)
+#     username = models.CharField(max_length= 100,blank=True,null=True)
 
 
 

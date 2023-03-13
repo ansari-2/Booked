@@ -28,7 +28,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="margin-left: 73px;">
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="margin-left: 32px;">
         <div class="navbar-nav" style="margin-left: 15px;">
           {% if user %}
           {% if not searched %}
@@ -80,11 +80,11 @@
             </form>
           </div></a>
           {% endif %}
-          <a class="nav-link active" style="font-size: 19px;" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
-          <a class="nav-link active" style="font-size: 19px;" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-              <span id = 'redirect1' style="font-size: 19px;" > Welcome, {{user.username}}</span>
+              <span id = 'redirect1'> Welcome, {{user.username}}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:ivory">
               <a class="dropdown-item" href="{% url 'test' %}">My Tickets</a>
@@ -94,9 +94,8 @@
             </div>
           </li>
           {% else %}
-          <a class="nav-link active" style="font-size: 19px;" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
-          <a class="nav-link" style="font-size: 19px;" href="{% url 'login' %}" id="redirect1">Login</a>
-          <a class="nav-link active" style="font-size: 19px; margin-left: 10px;" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>
           {% endif %}
         </div>
       </div>
