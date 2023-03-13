@@ -18,29 +18,31 @@
       <a class="navbar-brand" id="logo" href="{% url 'main' %}">Booked</a>
       <form class="form-inline " action="{% url 'search_bar' %}" method="post"  >
         {% csrf_token %}
-        <input class="form-control mr-sm-2"  placeholder="Search by Events/Genre/Venues" aria-label="Search" name = 'genre' style="margin-left: 400px;" >
+        <input class="form-control mr-sm-2"  placeholder="Search by Events/Genre/Venues" aria-label="Search" name = 'genre' style="margin-left: 350px;" >
       </form>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav" style="margin-left: 130px;">
+        <div class="navbar-nav" style="margin-left: 62px;">
           {% if user %}
           <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
               <span id = 'redirect1'> Welcome, {{user.username}}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:ivory">
               <a class="dropdown-item" href="{% url 'test' %}">My Tickets</a>
-              <!-- <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a> -->
+              <a class="dropdown-item" href="{% url 'favourites' %}">My Favourites</a>
+              <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a> --> 
             </div>
           </li>
           {% else %}
           <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
           <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           {% endif %}
         </div>
       </div>

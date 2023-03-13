@@ -86,6 +86,7 @@ def submit(request):
 
     if request.method == 'POST': 
         otp = randint(1000,9999)
+        print(otp)
         user = User.objects.get(username = request.user)
         subject = f'OTP Verification'
         message = f'{otp}'
@@ -325,10 +326,12 @@ Showtime: {each.seat.venue.showtime} \nSeat Number:{each.seat.number}\n\n''')
         message = f'{all_tickets}'
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [user.email, ]
-        # send_mail( subject, message, email_from, recipient_list )
-        return render(request,'booking/paid.html',{'booked':tickets})
+        send_mail( subject, message, email_from, recipient_list )
+        recent = True
+        return render(request,'booking/paid.html',{'booked':tickets,'recent':recent})
+    recent = False
     tickets = Tickets.objects.filter(user = request.user)
-    return render(request,'booking/paid.html',{'booked':tickets})
+    return render(request,'booking/paid.html',{'booked':tickets,'recent':recent})
     
 def paynow(request):
     if request.method == "POST":
@@ -346,6 +349,33 @@ def paynow(request):
             seats.append(Seats.objects.get(number = each,venue = venue))
         context = {'venue':venue,'total':total,'seats':seats,'json_data':value_lst,'gst':gst,'discount':discount,'final':new_total}
     return render(request,'booking/paynow.html',context)
+
+
+def favourites(request): 
+     
+     genre = [] 
+     venue = []  
+     for each in Tickets.objects.filter(user = request.user):
+         genre.append(each.seat.venue.event.genre)
+         venue.append(each.seat.venue.name)
+     favourites = {}
+     fav_venue = {}
+     for each in genre:
+         favourites.update({each:genre.count(each)})  
+     for each in venue:
+         fav_venue.update({each:genre.count(each)})  
+     print(favourites)    
+     fav = max(favourites,key= favourites.get)
+     fav_v = max(fav_venue,key=fav_venue.get)
+     suggestions = Event.objects.filter(genre = fav) 
+     v_events = [] 
+     for each in Venue.objects.filter(name = fav_v):
+           v_events.append(Event.objects.get(name = each.event.name))
+     return render(request,'booking/favourites.html',{'fav':fav,'fav_venue':fav_v,'venue':v_events,'suggestions':suggestions})
+
+def about(request):
+    return render(request,'booking/about.html')
+         
 
 
 

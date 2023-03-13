@@ -32,20 +32,22 @@
         <div class="navbar-nav" style="margin-left: 130px;">
           {% if user %}
           <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
               <span id = 'redirect1'> Welcome, {{user.username}}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:ivory">
               <a class="dropdown-item" href="{% url 'test' %}">My Tickets</a>
-              <!-- <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a> -->
+              <a class="dropdown-item" href="{% url 'favourites' %}">My Favourites</a>
+              <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a> --> 
             </div>
           </li>
           {% else %}
           <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
           <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           {% endif %}
         </div>
       </div>

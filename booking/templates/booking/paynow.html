@@ -26,7 +26,7 @@
       <a class="navbar-brand" id="logo" href="{% url 'main' %}">Booked</a>
       <form class="form-inline " action="{% url 'search_bar' %}" method="post"  >
         {% csrf_token %}
-        <input class="form-control mr-sm-2"  placeholder="Search by Events/Genre/Venues" aria-label="Search" name = 'genre' style="margin-left: 311px;" >
+        <input class="form-control mr-sm-2"  placeholder="Search by Events/Genre/Venues" aria-label="Search" name = 'genre' style="margin-left: 383px;" >
       </form>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -35,20 +35,22 @@
         <div class="navbar-nav" style="margin-left: 482px;">
           {% if user %}
           <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only"></span></a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only"></span></a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
               <span id = 'redirect1'> Welcome, {{user.username}}</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:ivory">
               <a class="dropdown-item" href="{% url 'test' %}">My Tickets</a>
-              <!-- <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a> -->
+              <a class="dropdown-item" href="{% url 'favourites' %}">My Favourites</a>
+              <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>  -->
             </div>
           </li>
           {% else %}
           <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
           <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           {% endif %}
         </div>
       </div>
@@ -80,8 +82,8 @@
           <div
             class="border d-flex"
             style="
-              position: sticky;
-              top: 0;
+              /* position: sticky;
+              top: 0; */
               justify-content: center;
               flex-direction: column;
               align-items: center;
@@ -128,6 +130,12 @@
               <input type="hidden" id="otp_data" name="otp_data" value="{{otp}}" />
               <input type="hidden" name="total" id="json" value="{{json_data}}" />
             </form>
+            <br>
+            <form action="{% url 'submit' %}" method="POST" class="formele">
+              {% csrf_token %}
+             <button id="total"name="total"value="{{json_data}}"type="submit"class="paynow">
+              Resend OTP
+             </button>
             {% else %}
             <form action="{% url 'submit' %}" method="POST" class="formele">
               {% csrf_token %}

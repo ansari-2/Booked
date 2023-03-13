@@ -14,4 +14,6 @@ urlpatterns = [
     path('submit', views.submit,name = 'submit'),
     path('test',views.test_total,name='test'),
     path('paynow',views.paynow,name='paynow'),
+    path('favourites',views.favourites,name='favourites'),
+    path('about',views.about,name='about')
 ]
