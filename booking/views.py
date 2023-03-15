@@ -8,6 +8,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from random import randint
 import json
+from django.shortcuts import HttpResponse
 # from twilio.rest import Client
 # import os
 
@@ -84,7 +85,7 @@ def display_seats(request,id):
 
 def submit(request):
 
-    if request.method == 'POST': 
+    # if request.method == 'POST': 
         otp = randint(1000,9999)
         print(otp)
         user = User.objects.get(username = request.user)
@@ -93,24 +94,26 @@ def submit(request):
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [user.email, ]
         send_mail( subject, message, email_from, recipient_list )
-        value_lst = request.POST.get('total')
-        json_value = json.loads(value_lst)
-        total = json_value[0]
-        venue_id = json_value[2][0]
-        venue = Venue.objects.get(id=venue_id)
-        seats = []
-        for each in json_value[1]:
-            seats.append(Seats.objects.get(venue = venue,number = each))
-        gst =  total * 18//100
-        discount = (total * 10//100)
-        new_total = total + gst - discount    
-        print(otp,value_lst)
+        # value_lst = request.POST.get('total')
+        # json_value = json.loads(value_lst)
+        # total = json_value[0]
+        # venue_id = json_value[2][0]
+        # venue = Venue.objects.get(id=venue_id)
+        # seats = []
+        # for each in json_value[1]:
+        #     seats.append(Seats.objects.get(venue = venue,number = each))
+        # gst =  total * 18//100
+        # discount = (total * 10//100)
+        # new_total = total + gst - discount    
+        # print(otp,value_lst)
     # try:
     #    user = User.objects.get(username = request.user)
     # except ObjectDoesNotExist:  
     #    user = False     
-    context = {'venue':venue,'total':total,'seats':seats,'json_data':value_lst,'gst':gst,'discount':discount,'final':new_total,'otp':otp}
-    return render(request,'booking/paynow.html', context) 
+        # context = {'venue':venue,'total':total,'seats':seats,'json_data':value_lst,'gst':gst,'discount':discount,'final':new_total,'otp':otp}
+        context = {'otp':otp}
+        json_context = json.dumps(context)
+        return  HttpResponse(json_context) 
 
 
       
