@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/seats.css' %}" />
     <script defer src="{% static 'js/seats.js' %}"></script>
+    <title>Seats</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" id="nav">
@@ -30,9 +31,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav" style="margin-left: 62px;">
+        <div class="navbar-nav" >
           {% if user %}
-          <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'logout' %}" id="redirect" style="margin-left: 107px;">Logout <span class="sr-only">(current)</span></a>
           <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
@@ -46,9 +47,9 @@
             </div>
           </li>
           {% else %}
-          <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'display' %}" id="redirect1" style="margin-left: 200px;"></a>>Signup<span class="sr-only">(current)</span></a>
           <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>
-          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect1">About <span class="sr-only">(current)</span></a>
           {% endif %}
         </div>
       </div>

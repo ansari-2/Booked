@@ -33,7 +33,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav" style="margin-left: 980px;">
+        <div class="navbar-nav" style="margin-left: 1000px;">
           {% if user %}
           <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
           <li class="nav-item dropdown">
@@ -48,7 +48,7 @@
             </div>
           </li>
           {% else %}
-          <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'display' %}" id="redirect1" style="margin-left: 165px;">Signup<span class="sr-only">(current)</span></a>
           <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>
           {% endif %}
         </div>

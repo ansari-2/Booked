@@ -34,7 +34,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav" style="margin-left: 980px;">
+        <div class="navbar-nav" style="margin-left: 1150px;">
           {% if user %}
           <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
           <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
@@ -50,7 +50,6 @@
             </div>
           </li>
           {% else %}
-          <a class="nav-link active" href="{% url 'display' %}" ><span id="redirect">Signup</span><span class="sr-only">(current)</span></a>
           <a class="nav-link" href="{% url 'login' %}" ><span id="redirect" style="font-style: normal;">Login</span></a>
           <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           {% endif %}
@@ -68,7 +67,7 @@
     <form name="signup" action="{% url 'profile' %}" onsubmit="return validation()"method="POST">
     {% csrf_token %}
     <label for="username">Enter Username:  </label> 
-    <input type="text" id="username" name="username" requried class = 'width' style="margin-left: 29px;" /> <br> <br>
+    <input type="text" id="username" name="username" requried class = 'width' style="margin-left: 29px;" placeholder="Should Contain atmost 10 Characters"/> <br> <br>
     <label for="password1"> Enter Password:  </label> 
     <input type="password" id="password1" name="password1" required class="width" style = "margin-left: 34px;"placeholder='Alpha Numeric Characters Only' /> <br><br> 
     <label for="password2">Re-enter Password:  </label>

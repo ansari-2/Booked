@@ -7,6 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.core.mail import send_mail
 from random import randint
+from django.shortcuts import HttpResponse
 import json
 # from twilio.rest import Client
 # import os
@@ -27,6 +28,10 @@ def login_(request):
         user = authenticate(username=username_, password=entered_password)
         if user is not None:
             login(request, user)
+        else:
+            context = 'Wrong Password or Email!'
+            return render(request, 'booking/authenticate.html',{'user':user,'context':context})
+
         return redirect('main')    
 
 def logout_(request):
@@ -84,7 +89,7 @@ def display_seats(request,id):
 
 def submit(request):
 
-    if request.method == 'POST': 
+    # if request.method == 'POST': 
         otp = randint(1000,9999)
         print(otp)
         user = User.objects.get(username = request.user)
@@ -93,24 +98,26 @@ def submit(request):
         email_from = settings.EMAIL_HOST_USER
         recipient_list = [user.email, ]
         send_mail( subject, message, email_from, recipient_list )
-        value_lst = request.POST.get('total')
-        json_value = json.loads(value_lst)
-        total = json_value[0]
-        venue_id = json_value[2][0]
-        venue = Venue.objects.get(id=venue_id)
-        seats = []
-        for each in json_value[1]:
-            seats.append(Seats.objects.get(venue = venue,number = each))
-        gst =  total * 18//100
-        discount = (total * 10//100)
-        new_total = total + gst - discount    
-        print(otp,value_lst)
+        # value_lst = request.POST.get('total')
+        # json_value = json.loads(value_lst)
+        # total = json_value[0]
+        # venue_id = json_value[2][0]
+        # venue = Venue.objects.get(id=venue_id)
+        # seats = []
+        # for each in json_value[1]:
+        #     seats.append(Seats.objects.get(venue = venue,number = each))
+        # gst =  total * 18//100
+        # discount = (total * 10//100)
+        # new_total = total + gst - discount    
+        # print(otp,value_lst)
     # try:
     #    user = User.objects.get(username = request.user)
     # except ObjectDoesNotExist:  
     #    user = False     
-    context = {'venue':venue,'total':total,'seats':seats,'json_data':value_lst,'gst':gst,'discount':discount,'final':new_total,'otp':otp}
-    return render(request,'booking/paynow.html', context) 
+        # context = {'venue':venue,'total':total,'seats':seats,'json_data':value_lst,'gst':gst,'discount':discount,'final':new_total,'otp':otp}
+        context = {'otp':otp}
+        json_context = json.dumps(context)
+        return  HttpResponse(json_context) 
 
 
       
@@ -215,8 +222,12 @@ def search_bar(request):
           return render(request,'booking/display_venues.html',{'venues':result,'searched':searched}) 
     #   elif Seats.objects.filter(price = int(searched)):
     #       result = Seats.objects.filter(price = int(searched))  
-            # return render(request,'booking/seats.html',{'topseats':result})                            
-   return render(request,'booking/notfound.html')
+            # return render(request,'booking/seats.html',{'topseats':result}) 
+   try:
+        user = User.objects.get(username = request.user)
+   except ObjectDoesNotExist:
+        user = False                                   
+   return render(request,'booking/notfound.html',{'user':user})
       
    
 def sports_seats(request,venue):
@@ -288,14 +299,14 @@ def userProfile(request):
             except ObjectDoesNotExist:  
               user_e = False  
             lst = []
-            for each in profile.objects.values('email'):
+            for each in User.objects.values('email'):
                 lst.append(each.get('email'))
             if email in lst:
                 context = 'Email already exist enter a different email '
                 return render(request ,'booking/already.html',{'context':context,'user':user_e})
             else:
                 user = User.objects.create_user(username = user_name, password = user_password,email= email,first_name=first_name,last_name=last_name)
-                profile.objects.create(user = user, email = email,username = user_name)
+                # profile.objects.create(user = user, email = email,username = user_name)
                 return render(request,'booking/already.html',{'user':user_e})
             
 def test_total(request):
@@ -374,7 +385,11 @@ def favourites(request):
      return render(request,'booking/favourites.html',{'fav':fav,'fav_venue':fav_v,'venue':v_events,'suggestions':suggestions})
 
 def about(request):
-    return render(request,'booking/about.html')
+    try:
+        user = User.objects.get(username = request.user)
+    except ObjectDoesNotExist:
+        user = False    
+    return render(request,'booking/about.html',{'user':user})
          
 
 

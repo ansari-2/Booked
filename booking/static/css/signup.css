@@ -16,21 +16,19 @@ body{
     
   }
   
-#redirect{
-  color: #EAFDFC;
-  margin-left: 30px;
-  font-size: 25px;
-  font-family: 'Raleway', sans-serif;
-  font-style: normal;
-  }
-  
-#redirect1{
+  #redirect{
     color: #EAFDFC;
-    margin-left: 10px;
-    font-size: 25px;
+    margin-left: 8px;
+    font-size: 20px;
     font-family: 'Raleway', sans-serif;
-    font-style: normal;
-  }
+    }
+    
+  #redirect1{
+      color: #EAFDFC;
+      margin-left: 8px;
+      font-size: 20px;
+      font-family: 'Raleway', sans-serif;
+    }
   
 .form-control{
     padding-left: 150px;

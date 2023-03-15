@@ -33,10 +33,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav" style="margin-left: 980px;">
+        <div class="navbar-nav" style="margin-left: 1150px;">
           {% if not user %}
-          <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
-          <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>    
+          <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>   
           <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>      
           {% else %}
           <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
@@ -62,12 +61,15 @@
     <div class="col-sm" style="border: 2px solid black; padding-top: 20px; padding-bottom: 20px; box-shadow:black;">
       <h3 class = '.content' ><b>Login Here</b></h3><br>
     <form name="signup" action="{% url 'login' %}" method="POST">
-    {% csrf_token %}
+     {% csrf_token %}
     <label for="username">Enter Username:  </label> 
     <input type="text" id="username" name="username" requried class = 'width' style="margin-left: 29px;" /> <br> <br>
     <label for="password1"> Enter Password:  </label> 
     <input type="password" id="password" name="password" required class="width" style = "margin-left: 34px;"placeholder='Alpha Numeric Characters Only' /> <br><br> 
-    <input  type="submit" value="Login" class="Signup" /> <br>
+    <input  type="submit" value="Login" class="Signup" /> <br><br>
+    {% if context %}
+    {{context}}
+    {% endif %}
     </div>
   </div>
 </div>

@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <title>Sports-seats</title>
   </head>
 
   <body>
@@ -23,15 +24,15 @@
       <a class="navbar-brand" id="logo" href="{% url 'main' %}">Booked</a>
       <form class="form-inline " action="{% url 'search_bar' %}" method="post"  >
         {% csrf_token %}
-        <input class="form-control mr-sm-2"  placeholder="Search by Events/Genre/Venues" aria-label="Search" name = 'genre' style="margin-left: 400px;" >
+        <input class="form-control mr-sm-2"  placeholder="Search by Events/Genre/Venues" aria-label="Search" name = 'genre' style="margin-left: 350px;" >
       </form>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav" style="margin-left: 130px;">
+        <div class="navbar-nav">
           {% if user %}
-          <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'logout' %}" id="redirect" style="margin-left: 107px;">Logout <span class="sr-only">(current)</span></a>
           <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
@@ -45,9 +46,9 @@
             </div>
           </li>
           {% else %}
-          <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'display' %}" id="redirect1" style="margin-left: 200px;">Signup<span class="sr-only">(current)</span></a>
           <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>
-          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect1">About <span class="sr-only">(current)</span></a>
           {% endif %}
         </div>
       </div>

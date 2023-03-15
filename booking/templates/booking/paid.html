@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/paid.css' %}">
+    <title>Tickets</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" id="nav">
@@ -22,9 +23,9 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav" style="margin-left: 885px;">
+        <div class="navbar-nav" >
           {% if user %}
-          <a class="nav-link active" href="{% url 'logout' %}" id="redirect">Logout <span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'logout' %}" id="redirect" style="margin-left: 935px;">Logout <span class="sr-only">(current)</span></a>
           <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only">(current)</span></a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
@@ -38,9 +39,9 @@
             </div>
           </li>
           {% else %}
-          <a class="nav-link active" href="{% url 'display' %}" id="redirect">Signup<span class="sr-only">(current)</span></a>
+          <a class="nav-link active" href="{% url 'display' %}" id="redirect1">Signup<span class="sr-only">(current)</span></a>
           <a class="nav-link" href="{% url 'login' %}" id="redirect1">Login</a>
-          <a class="nav-link active" href="{% url 'about' %}" id="redirect">About <span class="sr-only"></span></a>
+          <a class="nav-link active" href="{% url 'about' %}" id="redirect1">About <span class="sr-only"></span></a>
           {% endif %}
         </div>
       </div>

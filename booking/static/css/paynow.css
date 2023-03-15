@@ -15,19 +15,20 @@ body{
   
 }
 
+  
 #redirect{
-color: #EAFDFC;
-margin-left: 30px;
-font-size: 25px;
-font-family: 'Raleway', sans-serif;
-}
-
-#redirect1{
   color: #EAFDFC;
-  margin-left: 10px;
-  font-size: 25px;
+  margin-left: 8px;
+  font-size: 20px;
   font-family: 'Raleway', sans-serif;
-}
+  }
+  
+#redirect1{
+    color: #EAFDFC;
+    margin-left: 8px;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+  }
 
 .form-control{
 
@@ -38,7 +39,7 @@ font-family: 'Raleway', sans-serif;
     width: 50%;
   }
 
-.paynow{
+.paynow,.resendOtp{
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
     width: 200px;
@@ -50,7 +51,7 @@ font-family: 'Raleway', sans-serif;
     
 }
 
-.paynow:hover{
+.paynow:hover,.resendOtp:hover {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
     width: 200px;
@@ -64,7 +65,7 @@ font-family: 'Raleway', sans-serif;
 
 #submit{
   width: 100px;
-  margin-left: 45px;
+  
 }
 
 .font{
@@ -111,4 +112,10 @@ footer ul{
 }
 .socials li:hover{
   color: aqua;
+}
+.myform-otp {
+  display: none;
+}
+.resendOtp {
+  display: none;
 }
