@@ -1,114 +1,111 @@
-body{
-  background-color:  rgb(20, 34, 61);
-}
-
-
-#nav{
+body {
   background-color: rgb(20, 34, 61);
 }
 
+#nav {
+  background-color: rgb(20, 34, 61);
+}
 
-#logo{
-  font-family: 'Pacifico', cursive;
+#logo {
+  font-family: "Pacifico", cursive;
   font-size: 35px;
   color: aliceblue;
-  
 }
 
-#redirect{
-color: #EAFDFC;
-margin-left: 30px;
-font-size: 25px;
-font-family: 'Raleway', sans-serif;
+#redirect {
+  color: #eafdfc;
+  margin-left: 30px;
+  font-size: 25px;
+  font-family: "Raleway", sans-serif;
 }
 
-#redirect1{
-  color: #EAFDFC;
+#redirect1 {
+  color: #eafdfc;
   margin-left: 10px;
   font-size: 25px;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
-.form-control{
-
+.form-control {
   text-align: center;
 }
 
 .formele {
-    width: 50%;
-  }
-
-.paynow{
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-    width: 200px;
-    height: 35px;
-    border-radius: 5px;
-    background-color: white; 
-    color: black; 
-    border: 2px solid  rgb(20, 34, 61);
-    
+  width: 50%;
 }
 
-.paynow:hover{
-    font-family: 'Raleway', sans-serif;
-    font-weight: bold;
-    width: 200px;
-    height: 35px;
-    border-radius: 5px;
-    background-color: rgb(20, 34, 61); 
-    color: white; 
-    border: 2px solid  rgb(20, 34, 61);
-    
+.paynow,
+.resendOtp {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  width: 200px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  border: 2px solid rgb(20, 34, 61);
 }
 
-#submit{
+.paynow:hover,
+.resendOtp:hover {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  width: 200px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: rgb(20, 34, 61);
+  color: white;
+  border: 2px solid rgb(20, 34, 61);
+}
+
+#submit {
   width: 100px;
   margin-left: 45px;
 }
 
-.font{
-  font-family: 'Raleway', sans-serif;
+.font {
+  font-family: "Raleway", sans-serif;
 }
 
-footer h3{
-  font-family: 'Pacifico', cursive;
+footer h3 {
+  font-family: "Pacifico", cursive;
 }
 
-footer{
+footer {
   padding-top: 10px;
-  background-color:rgb(20, 34, 61);
-  color: #EAFDFC;
+  background-color: rgb(20, 34, 61);
+  color: #eafdfc;
   padding-bottom: 10px;
   text-align: center;
 }
-footer svg{
+footer svg {
   height: 30px;
   width: 30px;
 }
 
-footer ul{
+footer ul {
   list-style-type: none;
 }
 
-.socials{
- 
+.socials {
   display: flex;
   margin-left: 44%;
 }
 
-.socials li{
-  
-
+.socials li {
   padding-left: 5px;
   padding-right: 5px;
- 
 }
 
-
-.socials svg{
-  color: #EAFDFC;
+.socials svg {
+  color: #eafdfc;
 }
-.socials li:hover{
+.socials li:hover {
   color: aqua;
+}
+.myform-otp {
+  display: none;
+}
+.resendOtp {
+  display: none;
 }
